@@ -65,7 +65,9 @@ const Order = new mongoose.model('Order',orderSchema);
 main().catch(err => console.log(err));
 
 async function main() {
-    await mongoose.connect('mongodb://localhost:27017/test');
+    await mongoose.connect(
+      "mongodb+srv://lavesh:lavesh@petcart.hteafda.mongodb.net/?retryWrites=true&w=majority"
+    );
     console.log('Server Connected');
     // Write Code Here
 }
@@ -73,24 +75,21 @@ async function main() {
 
 app.get('/createProduct',(req,res)=>{
     let product = new Product({
-        id:2,
-        name :'petbelt',
-        price: 900,
-        category: 'cameras',
-        rating:4,
-        color:'red',
-        size : '',
-        details : {
-            product :"",
-            warranty : "",
-            merchant:""
-        },
-        image:'petcare',
-        images :['petcare','petcare1','petcare2']
-
-
-    
-    })
+      id: 2,
+      name: "Pedigree Puppy Chicken Chunks in Gravy 80g (6 pouch combo)",
+      price: 900,
+      category: "pet Food",
+      rating: 4,
+      color: "red",
+      size: "",
+      details: {
+        product: "",
+        warranty: "",
+        merchant: "",
+      },
+      image: "petcare",
+      images: ["petcare", "petcare1", "petcare2"],
+    });
     product.save().then((success)=>{
         res.send(success)
     }).catch(err=>{
